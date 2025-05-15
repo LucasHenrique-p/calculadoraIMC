@@ -16,9 +16,14 @@ class _TelaHomeState extends State<TelaHome> {
     double altura = double.tryParse(alturaController.text) ?? 0;
 
     if (peso <= 0 || altura <= 0) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Informe valores Abaixo!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Informe os Valores Acima!',
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
       return;
     }
 
@@ -33,33 +38,44 @@ class _TelaHomeState extends State<TelaHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(title: Text('Calculadora de IMC'), centerTitle: true),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: pesoController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Peso (Kg)',
-                hintText: 'Ex: 70',
-              ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('images/imc.jpg', height: 150),
+                SizedBox(height: 30),
+                TextField(
+                  controller: pesoController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Peso (Kg)',
+                    hintText: 'Ex: 70',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 20),
+                TextField(
+                  controller: alturaController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Altura (m)',
+                    hintText: 'Ex: 1.70',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: calcularEIrParaResultado,
+                  child: Text('Calcular IMC'),
+                ),
+              ],
             ),
-            TextField(
-              controller: alturaController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Altura (m)',
-                hintText: 'Ex: 1.70',
-              ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: calcularEIrParaResultado,
-              child: Text('Calcular IMC'),
-            ),
-          ],
+          ),
         ),
       ),
     );
