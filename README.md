@@ -1,4 +1,8 @@
 # calculadoraimc
+App simples para calcular o IMC a partir do peso e altura. Exibe a faixa de peso com mensagem personalizada e emoticons, ajudando você a acompanhar sua saúde de forma prática.
+![image](https://github.com/user-attachments/assets/16928ddf-01b3-4079-a025-6a98660a82bd)
+
+![image](https://github.com/user-attachments/assets/b5f5c2f6-33e6-4733-84d8-1988891062b8)
 
 A new Flutter project.
 
